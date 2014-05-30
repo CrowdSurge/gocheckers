@@ -71,9 +71,15 @@ type lessThanChecker struct {
 }
 
 func (checker *lessThanChecker) Check(params []interface{}, names []string) (result bool, err string) {
-	result, err = GreaterThan.Check(params, names)
+	gt, err := GreaterThan.Check(params, names)
 	if err != "" {
-		return result, err
+		return gt, err
 	}
-	return !result, err
+
+	eq, err := gocheck.Equals.Check(params, names)
+	if err != "" {
+		return eq, err
+	}
+
+	return !(gt || eq), err
 }

@@ -66,6 +66,7 @@ func (s *CheckersTestSuite) TestGreaterThan(c *gocheck.C) {
 
 	testCheck(c, GreaterThan, true, "", len([]int{1, 2, 3}), 2)
 	testCheck(c, GreaterThan, false, "", 2, 6)
+	testCheck(c, GreaterThan, false, "", 0, 0)
 	testCheck(c, GreaterThan, false, "val must be an int", "", 0)
 	testCheck(c, GreaterThan, false, "val must be an int", []int{0}, 0)
 }
@@ -75,6 +76,7 @@ func (s *CheckersTestSuite) TestLessThan(c *gocheck.C) {
 
 	testCheck(c, LessThan, true, "", len([]int{1, 2, 3}), 5)
 	testCheck(c, LessThan, false, "", 2, 0)
+	testCheck(c, LessThan, false, "", 0, 0)
 	testCheck(c, LessThan, false, "val must be an int", "", 0)
 	testCheck(c, LessThan, false, "val must be an int", []int{0}, 0)
 }
