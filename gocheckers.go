@@ -42,7 +42,7 @@ type greaterThanChecker struct {
 	*gocheck.CheckerInfo
 }
 
-func (checker *greaterThanChecker) Check(params []interface{}, names []string) (result bool, error string) {
+func (checker *greaterThanChecker) Check(params []interface{}, names []string) (result bool, err string) {
 	v, ok := params[0].(int)
 	if !ok {
 		return false, "val must be an int"
@@ -53,4 +53,27 @@ func (checker *greaterThanChecker) Check(params []interface{}, names []string) (
 		return false, "n must be an int"
 	}
 	return v > n, ""
+}
+
+// The LessThan checker verifies that the obtained value is strictly
+// less than provided value.
+//
+// For example:
+//
+// 		c.Check(len(list), LessThan, 5)
+//
+var LessThan gocheck.Checker = &lessThanChecker{
+	&gocheck.CheckerInfo{Name: "LessThan", Params: []string{"obtained", "n"}},
+}
+
+type lessThanChecker struct {
+	*gocheck.CheckerInfo
+}
+
+func (checker *lessThanChecker) Check(params []interface{}, names []string) (result bool, err string) {
+	result, err = GreaterThan.Check(params, names)
+	if err != "" {
+		return result, err
+	}
+	return !result, err
 }
