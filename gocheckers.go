@@ -25,7 +25,9 @@
 // Package gocheckeres contains additional Checker implementations.
 package gocheckers
 
-import "launchpad.net/gocheck"
+import (
+	gocheck "gopkg.in/check.v1"
+)
 
 // The GreaterThan checker verifies that the obtained value is strictly
 // greater than provided length.

@@ -28,7 +28,7 @@ import (
 	"reflect"
 	"testing"
 
-	"launchpad.net/gocheck"
+	gocheck "gopkg.in/check.v1"
 )
 
 func Test(t *testing.T) { gocheck.TestingT(t) }
