@@ -1,4 +1,4 @@
-# CrowdSurge Checkers
+# Go Checkers
 
 These are additional gocheck Checker implementations that can be used in addition to the ones provided by [gocheck](http://labix.org/gocheck).
 
